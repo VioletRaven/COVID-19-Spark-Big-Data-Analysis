@@ -6,8 +6,7 @@ from calendar import monthrange
 # Start the Spark Context
 sc = SparkContext("local[2]", "query_2")
 
-#Q2 
-#Using the following dataset --> somministrazioni-vaccini-latest.csv, for all women and each age group/calendar month/region compute the minimum/maximum/mean number of vaccinations administered
+#Q2: Using the following dataset --> somministrazioni-vaccini-latest.csv, for all women and each age group/calendar month/region compute the minimum/maximum/mean number of vaccinations administered
 #Only consider the age groups where at least two days of vaccination campaign were recorded for each month, consider only data starting from the 1st of January, 2021
 
 #Load the dataset --> somministrazioni-vaccini-latest.csv
