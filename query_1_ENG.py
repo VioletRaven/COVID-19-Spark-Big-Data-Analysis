@@ -6,7 +6,7 @@ from calendar import monthrange
 # Start the Spark Context
 sc = SparkContext("local[2]", "query_1")
 
-#Q1 Using the following datasets: somministrazioni-vaccini-summary-latest.csv and punti-somministrazione-tipologia.csv, for each calendar month and region 
+#Q1: Using the following datasets: somministrazioni-vaccini-summary-latest.csv and punti-somministrazione-tipologia.csv, for each calendar month and region 
 #compute the mean daily number of vaccinations given in a certain COVID-19 center.
 #Consider only data starting from the 1st of January, 2021.
 
