@@ -3,9 +3,6 @@ from pyspark import SparkContext
 from datetime import datetime
 from calendar import monthrange
 
-
-
-
 # Start the Spark Context
 sc = SparkContext("local[2]", "query_1")
 
