@@ -9,4 +9,9 @@ All datasets come from https://github.com/italia/covid19-opendata-vaccini/tree/m
 - https://github.com/italia/covid19-opendata-vaccini/blob/master/dati/somministrazioni-vaccini-latest.csv
 - https://github.com/italia/covid19-opendata-vaccini/blob/master/dati/somministrazioni-vaccini-summary-latest.csv
 
-Do not remove this line from the start of the script if using a Linux system --> # coding: utf-8
+## Do not remove this line from the start of the script if using a Linux system --> # coding: utf-8
+
+Helpful commands:
+
+data.collect()
+data.take(n° of rows)
