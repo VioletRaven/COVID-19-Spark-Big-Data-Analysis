@@ -1,0 +1,46 @@
+#QUERY 1
+#Mi posiziono nella cartella in locale dove ho salvato i dataset "somministrazioni-vaccini-latest.csv" e "totale-popolazione.csv" ed il il file "query_3_final.py"
+
+# Apri Cartella Corrente nel terminale 
+
+#Avvio HDFS 
+$HADOOP_HOME/sbin/start-dfs.sh 
+
+#Avvio Standalone Master Server Spark
+$SPARK_HOME/sbin/start-master.sh
+
+# Eseguo il comando makerdir su HDFS per creare la cartella e sottocartella dove verrà caricato il dataset di input
+hdfs dfs -mkdir -p /user/query
+
+# Carico i file "somministrazioni-vaccini-summary-latest.csv" e "totale-popolazione.csv" prensenti in locale su HDFS nel path creato allo step precedente
+
+hdfs dfs -put somministrazioni-vaccini-summary-latest.csv /user/query/somministrazioni-vaccini-summary-latest.csv
+
+hdfs dfs -put totale-popolazione.csv /user/query/totale-popolazione.csv
+
+# Verifico che i file siano presenti sulla cartella indicata in HDFS 
+hdfs dfs -ls /user/query
+
+# Eseguo lo script "query_3.py"
+spark-submit query_3.py
+
+# Verifico il file di output generato nella cartella creata su HDFS da parte del codice query_3.py
+hdfs dfs -ls /user/query/output_query_3
+
+# Leggo i risultati della query1
+hdfs dfs -cat /user/query/output_query_3/part-00000
+
+# Copio il file di output da HDFS  in locale 
+hdfs dfs -get /user/query/output_query_3/part-00000 output_query_3.txt
+
+#Per poter rieseguire il codice con dati aggiornati cancello cartella di output e Input
+# Cancello cartella e contenuto di output su HDFS
+hdfs dfs -rm -r  /user/query/output_query1_3
+# Cancello cartella e contenuto di Input su HDFS
+hdfs dfs -rm -r  /user/query
+
+#Fermo Standalone Master Server Spark
+$SPARK_HOME/sbin/stop-master.sh
+
+#Fermo HDFS 
+$HADOOP_HOME/sbin/stop-dfs.sh
